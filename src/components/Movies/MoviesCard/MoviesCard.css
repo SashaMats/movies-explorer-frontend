@@ -1,0 +1,118 @@
+.card {
+  position: relative;
+}
+.image__wrapper {
+  cursor: pointer;
+}
+.card__image {
+  width: 100%;
+  height: 50%;
+  max-height: 201px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.card__save-button {
+  display: none;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  margin: 0;
+  cursor: pointer;
+  border: none;
+  padding: 6px;
+  color: white;
+  background-color: rgba(49, 49, 49, 1);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 9px;
+  border-radius: 10px;
+}
+.card__save-button_visible {
+  display: block;
+}
+.card__save-button_invisible {
+  display: none;
+}
+.card__save-button:hover {
+  opacity: 80%;
+  transition: opacity 0.2s linear;
+}
+.card__complete-icon {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+}
+.card__delete-button {
+  display: none;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  width: 21px;
+  height: 21px;
+  background-color: rgba(49, 49, 49, 1);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../../../images/delete-button.svg);
+}
+.card__delete-button_visible {
+  display: block;
+}
+.card__delete-button_invisible {
+  display: none;
+}
+.card__delete-button:hover {
+  opacity: 80%;
+  transition: opacity 0.2s linear;
+}
+.card__info {
+  width: 92.22%;
+  margin: 14px auto 0;
+  display: flex;
+  flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+  .card__movie-name {
+    max-width: 250px;
+    margin: 0;
+    color: white;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15.73px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .card__movie-duration {
+    /* width: 53px; */
+    margin: 0;
+    padding: 3px;
+    border-radius: 3px;
+    color: rgba(139, 139, 139, 1);
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 15.73px;
+    background-color: rgba(47, 47, 47, 1);
+  }
+
+  @media screen and (max-width: 1279px) {
+    .card__image {
+      height: 190px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .card__image {
+      height: 163px;
+    }
+    .card__movie-name {
+      font-size: 12px;
+      line-height: 14.52px;
+    }
+    .card__movie-name {
+      max-width: 240px;
+    }
+  }

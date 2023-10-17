@@ -1,0 +1,38 @@
+.navtab {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.navtab__button {
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  border: none;
+  border-radius: 10px;
+  width: 96px;
+  height: 36px;
+  margin: 0 5px 0;
+  background: rgba(48, 48, 48, 1);
+}
+
+.navtab__button:hover {
+  opacity: 80%;
+  transition: opacity 0.2s linear;
+}
+
+@media screen and (max-width: 767px) {
+  .navtab__button {
+    font-size: 10px;
+    width: 82px;
+    height: 26px;
+    margin: 0 3px 0;
+  }
+}
