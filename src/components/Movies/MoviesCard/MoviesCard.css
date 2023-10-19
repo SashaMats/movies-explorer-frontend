@@ -71,12 +71,12 @@
   width: 92.22%;
   margin: 14px auto 0;
   display: flex;
-  flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 1fr;
     align-items: center;
 }
   .card__movie-name {
-    max-width: 250px;
     margin: 0;
     color: white;
     font-weight: 500;
@@ -86,8 +86,13 @@
     overflow: hidden;
     white-space: nowrap;
   }
+  .card__info-duration-container {
+    display: flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
   .card__movie-duration {
-    /* width: 53px; */
     margin: 0;
     padding: 3px;
     border-radius: 3px;
@@ -111,8 +116,5 @@
     .card__movie-name {
       font-size: 12px;
       line-height: 14.52px;
-    }
-    .card__movie-name {
-      max-width: 240px;
     }
   }

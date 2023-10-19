@@ -4,7 +4,7 @@
   color: white;
   min-width: 320px;
   max-width: 1280px;
-  padding: 110px 0;
+  padding: 110px 0 102px;
   /* border: 1px solid fuchsia; */
 }
 
@@ -29,7 +29,7 @@
       font-weight: 400;
       font-size: 22px;
       line-height: 26.63px;
-      letter-spacing: 4%;
+      letter-spacing: calc(1em * -0.04);
     }
 
     .about-project__line {
@@ -43,7 +43,7 @@
       font-weight: 400;
       font-size: 20px;
       line-height: 24.3px;
-      letter-spacing: 4%;
+      letter-spacing: calc(1em * -0.04);
     }
     .about-project__info-title_left {
       grid-area: info-title-left;
@@ -75,13 +75,14 @@
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 36px);
     align-items: center;
+    row-gap: 4px;
     grid-template-areas:
       "progress-backend progress-frontend progress-frontend progress-frontend progress-frontend"
       "backend frontend frontend frontend frontend";
   }
 
     .about-project__text {
-      margin: 8px 0;
+      margin: 10px 0;
     }
     .about-project__progress-bar {
       margin: 0;
@@ -136,7 +137,7 @@
 
 @media screen and (max-width: 767px) {
   .about-project {
-    padding: 70px 0;
+    padding: 69px 0 58px;
   }
   .about-project__info {
     text-align: left;
@@ -144,7 +145,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 22px 28px 104px 64px 120px 64px;
+    grid-template-rows: 23px 27px 106px 63px 101px 63px;
     align-items: end;
     grid-template-areas:
       "title"
@@ -166,7 +167,18 @@
     font-size: 11px;
     line-height: 16px;
   }
-
+  .about-project__progress {
+    width: 89%;
+    margin: 110px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 36px);
+    align-items: center;
+    row-gap: 0;
+    grid-template-areas:
+      "progress-backend progress-frontend progress-frontend progress-frontend progress-frontend"
+      "backend frontend frontend frontend frontend";
+  }
   .about-project__progress-bar {
     font-size: 11px;
     line-height: 13.31px;

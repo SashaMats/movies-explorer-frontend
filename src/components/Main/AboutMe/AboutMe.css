@@ -16,7 +16,7 @@
       font-weight: 400;
       font-size: 22px;
       line-height: 26.63px;
-      letter-spacing: 4%;
+      letter-spacing: calc(1em * -0.04);
     }
     .about-me__line {
       border-bottom: 1px solid white;
@@ -40,7 +40,7 @@
         font-weight: 400px;
         font-size: 50px;
         line-height: 58px;
-        letter-spacing: 4%;
+        letter-spacing: calc(1em * -0.04);
       }
       .about-me__job {
         margin: 0;
@@ -138,7 +138,7 @@
   }
   .about-me__image {
     width: 100%;
-    height: 121.1111%;
+    height: 120.54%;
     max-width: 500px;
     max-height: 605px;
   }
@@ -150,4 +150,12 @@
   .about-me__link {
     margin-top: 40px;
   } 
+}
+@media screen and (max-width: 550px) {
+  .about-me__image {
+    width: 100%;
+    height: 120.54%;
+    max-width: 500px;
+    max-height: 352px;
+  }
 }

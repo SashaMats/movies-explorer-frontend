@@ -4,7 +4,7 @@ import Portfolio from "../Portfolio/Portfolio";
 function AboutMe({name}, ref) {
   return(
     <>
-      <div name={name} ref={ref} className="about-me">
+      <section name={name} ref={ref} className="about-me">
         <div className="about-me__wrapper">
           <p className="about-me__title">Студент</p>
           <div className="about-me__line"></div>
@@ -20,7 +20,7 @@ function AboutMe({name}, ref) {
           </div>
         <Portfolio></Portfolio>
         </div>
-      </div>
+      </section>
     </>
   )
 }

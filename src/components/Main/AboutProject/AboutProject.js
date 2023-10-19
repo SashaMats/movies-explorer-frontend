@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 function AboutProject({name}, ref) {
   return(
     <>
-      <div name={name} ref={ref} className="about-project">
+      <section name={name} ref={ref} className="about-project">
         <div className="about-project__info">
           <h2 className="about-project__title">О проекте</h2>
           <div className="about-project__line"></div>
@@ -18,7 +18,7 @@ function AboutProject({name}, ref) {
           <div className="about-project__progress-bar-description about-project__progress-bar-description_backend"><p className="about-project__text">Back-end</p></div>
           <div className="about-project__progress-bar-description about-project__progress-bar-description_frontend"><p className="about-project__text">Front-end</p></div>
         </div>
-      </div>
+      </section>
     </>
   )
 }

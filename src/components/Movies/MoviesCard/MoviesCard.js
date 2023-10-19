@@ -37,8 +37,10 @@ const [isDelButtonVisible, setIsDelButtonVisible] = useState('card__delete-butto
         }
        
         <div className="card__info">
-          <p className="card__movie-name">{filmName}</p>
-          <p className="card__movie-duration">{filmDuration}</p>
+            <p className="card__movie-name">{filmName}</p>
+          <div className="card__info-duration-container">
+            <p className="card__movie-duration">{filmDuration}</p>
+          </div>
         </div>
       </div>
     </>

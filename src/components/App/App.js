@@ -28,7 +28,9 @@ function App() {
           element={
             <>
               <Header loggenIn={loggedIn}></Header>
-              <Movies></Movies>
+              <main>
+                <Movies></Movies>
+              </main>
               <Footer></Footer>
             </>
           }>
@@ -37,7 +39,9 @@ function App() {
               element={
                 <>
                   <Header loggenIn={loggedIn}></Header>
-                  <SavedMovies></SavedMovies>
+                  <main>
+                    <SavedMovies></SavedMovies>
+                  </main>
                   <Footer></Footer>
                 </>
                 }>
@@ -46,7 +50,9 @@ function App() {
           element={
             <>
               <Header loggenIn={loggedIn}></Header>
-              <Profile />
+              <main>
+                <Profile />
+              </main>
             </>
           }></Route>
         <Route path="/signin" element={<Register />}></Route>

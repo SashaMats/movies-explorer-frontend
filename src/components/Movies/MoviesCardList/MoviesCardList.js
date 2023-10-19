@@ -4,7 +4,7 @@ import Preloader from '../Preloader/Preloader'
 function MoviesCardList({name}) {
   return (
     <>
-      <div className="card-list">
+      <section className="card-list">
         <div className="card-list__wrapper">
           <ul className="card-list__list">
             <li className="card">
@@ -53,7 +53,7 @@ function MoviesCardList({name}) {
             </li>
           </ul>
         </div>
-      </div>
+      </section>
       <Preloader />
     </>
   )

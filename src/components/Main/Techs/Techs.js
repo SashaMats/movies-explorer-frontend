@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 function Techs({name}, refRef) {
   return(
     <>
-      <div name={name} ref={refRef} className="techs">
+      <section name={name} ref={refRef} className="techs">
         <div className="techs__wrapper">
           <p className="teschs__title">Технологии</p>
           <div className="techs__line"></div>
@@ -21,7 +21,7 @@ function Techs({name}, refRef) {
             </ul>
           </div>
         </div>
-      </div>
+      </section>
     </>
   )
 }

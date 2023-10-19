@@ -4,7 +4,7 @@ import Navigation from '../Navigation/Navigation';
 
 function Header({loggenIn}) {
   return(
-    <div className={'header'}>
+    <header className={'header'}>
       <div className='header__wrapper'>
       <div className='header__logo-wrapper'>
         <Link
@@ -25,7 +25,7 @@ function Header({loggenIn}) {
         </>
       }
       </div>
-    </div>
+    </header>
   )
 }
 

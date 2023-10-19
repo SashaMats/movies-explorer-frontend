@@ -23,7 +23,7 @@
       font-weight: 400;
       font-size: 22px;
       line-height: 26.63px;
-      letter-spacing: 4%;
+      letter-spacing: calc(1em * -0.04);
     }
 
     .techs__line {
@@ -44,7 +44,7 @@
       font-weight: 400;
       font-size: 50px;
       line-height: 58px;
-      letter-spacing: 4%;
+      letter-spacing: calc(1em * -0.04);
     }
 
     .techs__text {
@@ -54,7 +54,7 @@
       font-weight: 400;
       font-size: 14px;
       line-height: 20px;
-      letter-spacing: 4%;
+      letter-spacing: calc(1em * -0.04);
     }
 
     .techs__list {
