@@ -3,7 +3,8 @@ import Form from '../Form/Form';
 function Login() {
   const {values, errors, isValid, isInputValid, handleChange } = useFormValidation()
   return (
-    <Form 
+    <Form
+      id={'loginForm'} 
       name={'signupForm'}
       title={'Рады видеть!'} 
       submitButton={'Войти'}
@@ -16,7 +17,7 @@ function Login() {
       <label for="email" className="form__label">E-mail</label>
 
 
-      <input name="email" 
+      <input id="email" 
       placeholder='E-mail'
       className={`form__input ${isInputValid.email === undefined || isInputValid.email ? '' : 'form__input_error '}`}
       value={values.email ? values.email : ''}
@@ -31,7 +32,7 @@ function Login() {
       <label for="password" className="form__label">Пароль</label>
 
 
-      <input name="password"
+      <input id="password"
       placeholder='Password'
       className={`form__input ${isInputValid.password === undefined || isInputValid.password ? '' : 'form__input_error '}`}
       type="password"

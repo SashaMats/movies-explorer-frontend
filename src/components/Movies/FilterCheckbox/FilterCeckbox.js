@@ -14,9 +14,7 @@ function FilterCheckbox() {
 
 
 
-                <div className="checkbox__visible">
                       <span className="checkbox__visible-handler"></span>
-                </div>
 
 
 

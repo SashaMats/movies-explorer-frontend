@@ -8,7 +8,7 @@ const [isDelButtonVisible, setIsDelButtonVisible] = useState('card__delete-butto
   return (
     <>
       <div className="card">
-        <div className="image__wrapper" 
+        <div className="card__image__wrapper" 
               onMouseEnter={
                 () => {
                   if (check === 'false' && name === 'movies-list') {

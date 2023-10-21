@@ -1,7 +1,7 @@
 .card {
   position: relative;
 }
-.image__wrapper {
+.image__image-wrapper {
   cursor: pointer;
 }
 .card__image {

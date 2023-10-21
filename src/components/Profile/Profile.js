@@ -7,7 +7,7 @@ function Profile() {
   return (
     <section className="profile">
       <div className="profile__header-section">
-        <p className="profile__title">Привет, Виталий!</p>
+        <h2 className="profile__title">Привет, Виталий!</h2>
         <div className="profile__field">
           <p className="profile__field-name">Имя</p>
           <p className="profile__field-content">Виталий</p>

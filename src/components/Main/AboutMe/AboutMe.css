@@ -67,8 +67,6 @@
       } 
   .about-me__image {
     border-radius: 10px;
-    /* width: 270px;
-    height: 327px; */
     width: 38.173%;
     max-width: 270px;
     height: 45.958%;
@@ -98,12 +96,6 @@
         font-size: 12px;
         line-height: 18px;
       }
-      /* .about-me__image {
-        width: 38.173%;
-        max-width: 270px;
-        height: 45.958%;
-        max-height: 327px;
-      } */
   }
 @media screen and (max-width: 550px) {
   .about-me__wrapper {

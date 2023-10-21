@@ -16,9 +16,9 @@ const handleClick = (ref) => {
     <>
       <main>
         <Promo handleClick={handleClick} refs={refs}></Promo>
-        <AboutProject name={'aboutProject'} ref={aboutProjectRef}></AboutProject>
-        <Techs name={'tech'} ref={techRef} ></Techs>
-        <AboutMe name={'aboutMe'} ref={aboutMeRef}></AboutMe>
+        <AboutProject id={'aboutProject'} ref={aboutProjectRef}></AboutProject>
+        <Techs id={'tech'} ref={techRef} ></Techs>
+        <AboutMe id={'aboutMe'} ref={aboutMeRef}></AboutMe>
       </main>
     </>
 

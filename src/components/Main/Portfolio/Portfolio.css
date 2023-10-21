@@ -29,7 +29,7 @@
       opacity: 80%;
       transition: opacity 0.2s linear;
     }
-    .portrolio__link-text {
+    .portfolio__link-text {
       margin: 0;
       font-weight: 400;
       font-size: 30px;
@@ -62,7 +62,7 @@
     align-items: center;
     border-bottom: 1px solid rgba(66, 66, 66, 1);
   }
-  .portrolio__link-text {
+  .portfolio__link-text {
     font-size: 28px;
   }
 }
@@ -78,7 +78,7 @@
   .portfolio__items {
     margin-top: 23px;
   }
-  .portrolio__link-text {
+  .portfolio__link-text {
     font-size: 18px;
     line-height: 28px;
   }

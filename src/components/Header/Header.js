@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo.svg';
 import Navigation from '../Navigation/Navigation';
 
 function Header({loggenIn}) {
@@ -9,16 +8,15 @@ function Header({loggenIn}) {
       <div className='header__logo-wrapper'>
         <Link
           to="/"
-          src={logo} 
           className="header__logo">
         </Link>
       </div>
       {
         loggenIn === false ? 
-        <div className="header__buttons">
-          <Link to={'/signin'} className="header__register">{'Регистрация'}</Link>
-          <Link to={'/signup'} className="header__login">{'Войти'}</Link>s
-        </div>
+        <ul className="header__buttons">
+          <li><Link to={'/signin'} className="header__register">{'Регистрация'}</Link></li>
+          <li><Link to={'/signup'} className="header__login">{'Войти'}</Link></li>
+        </ul>
         : 
         <>
           <Navigation></Navigation>

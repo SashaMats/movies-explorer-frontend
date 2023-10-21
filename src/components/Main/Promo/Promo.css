@@ -5,13 +5,13 @@
   color: white;
 }
 
-.banner-promo {
+.promo__banner {
   margin: 0 auto;
   padding-top: 20px;
   width: 93.75%;
 }
 
-  .banner-promo__container {
+  .promo__banner-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,7 +21,7 @@
     padding: 160px 0 30px;
   }
 
-    .banner-promo__title {
+    .promo__banner-title {
       margin: 0;
       margin-bottom: 151px;
       max-width: 730px;
@@ -33,14 +33,14 @@
 
 
 @media screen and (max-width: 1279px) {
-  .banner-promo {
+  .promo__banner {
     width: 95.04%;
     padding-top: 20px;
   }
-  .banner-promo__container {
+  .promo__banner-container {
     padding: 350px 0 30px;
   }
-  .banner-promo__title {
+  .promo__banner-title {
     margin-bottom: 314px;
     max-width: 680px;
     font-weight: 400;
@@ -52,16 +52,16 @@
 
 
 @media screen and (max-width: 767px) {
-  .banner-promo {
+  .promo__banner {
     padding: 0;
     padding-top: 14px;
     width: 91.25%;
   }
 
-  .banner-promo__container {
+  .promo__banner-container {
     padding: 220px 0 17px;
   }
-  .banner-promo__title {
+  .promo__banner-title {
     margin-bottom: 212px;
     max-width: 300px;
     font-size: 29px;

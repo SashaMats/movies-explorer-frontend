@@ -5,8 +5,9 @@ function Register() {
   const {values, errors, isValid, isInputValid, handleChange } = useFormValidation()
   return (
     <Form
+      is={'registerForm'}
       name={'signinForm'}
-      title={'Добро пожаловать'}
+      title={'Добро пожаловать!'}
       submitButton={'Зарегистрироваться'}
       link={'/signup'}
       linkButton={'Войти'}
@@ -14,7 +15,7 @@ function Register() {
       isValid={isValid}
     >
         <label for="name" className="form__label">Имя</label>
-        <input name="name"
+        <input id="name"
           placeholder='Name'
           className={`form__input ${isInputValid.name === undefined || isInputValid.name ? '' : 'form__input_error '}`}
           value={values.name ? values.name : ''}
@@ -27,7 +28,7 @@ function Register() {
         <label for="email" className="form__label">E-mail</label>
 
 
-      <input name="email"
+      <input id="email"
       placeholder='E-mail'
       className={`form__input ${isInputValid.email === undefined || isInputValid.email ? '' : 'form__input_error '}`}
       value={values.email ? values.email : ''}
@@ -42,7 +43,7 @@ function Register() {
       <label for="password" className="form__label">Пароль</label>
 
 
-      <input name="password"
+      <input id="password"
       placeholder='Password'
       className={`form__input ${isInputValid.password === undefined || isInputValid.password ? '' : 'form__input_error '}`}
       type="password"

@@ -10,7 +10,7 @@ function Form({title, children, submitButton, question, linkButton, link, isVali
 
               </Link>
             </div>
-            <p className="form__title">{title}</p>
+            <h2 className="form__title">{title}</h2>
             {children}
           </div>
           <div className='form__buttom-section'>
