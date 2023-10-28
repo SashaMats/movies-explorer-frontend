@@ -4,6 +4,7 @@
   color: white;
   max-width: 1280px;
   min-width: 320px;
+  width: 89%;
 }
 
 .footer__project-name {
@@ -58,6 +59,9 @@
 }
 
 @media screen and (max-width: 1279px) {
+  .footer {
+    width: 92.18%;
+  }
   .footer__project-name {
     width: 92.18%;
   }
@@ -70,6 +74,9 @@
 }
 
 @media screen and (max-width: 767px) {
+  .footer {
+    width: 93.75%;
+  }
   .footer__project-name {
     width: 93.75%;
     font-size: 12px;

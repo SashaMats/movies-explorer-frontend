@@ -1,60 +1,116 @@
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader'
+import {
+  BigScreen,
+  MediumScreen,
+  MiniScreen,
+  InitMoreBigScreen,
+  InitLessBigScreen,
+  InitMediumScreen,
+  InitMiniScreen,
+  StepBigScreen,
+  StepMediumScreen,
+  StepMiniScreen
+} from "../../../utils/constants";
 
-function MoviesCardList({name}) {
+function MoviesCardList({name, movies, onDelete, addMovie, savedMovies, isLoading, serverError, firstEntrance}) {
+  const { pathname } = useLocation()
+  const [count, setCount] = useState('')
+  const fact = movies.slice(0, count)
+  function printCards() {
+    const counter = { init: InitMoreBigScreen, step: StepBigScreen }
+    if (window.innerWidth < BigScreen) {
+      counter.init = InitLessBigScreen
+      counter.step = StepMediumScreen
+    }
+    if (window.innerWidth < MediumScreen) {
+      counter.init = InitMediumScreen
+      counter.step = StepMiniScreen
+    }
+    if (window.innerWidth < MiniScreen) {
+      counter.init = InitMiniScreen
+      counter.step = StepMiniScreen
+    }
+    return counter
+  }
+  useEffect(() => {
+    if (pathname === '/movies') {
+      setCount(printCards().init)
+      function printCardsForResize() {
+        if (window.innerWidth >= StepBigScreen) {
+          setCount(printCards().init)
+        }
+        if (window.innerWidth < StepBigScreen) {
+          setCount(printCards().init)
+        }
+        if (window.innerWidth < MediumScreen) {
+          setCount(printCards().init)
+        }
+        if (window.innerWidth < MiniScreen) {
+          setCount(printCards().init)
+        }
+      }
+      window.addEventListener('resize', printCardsForResize)
+      return () => window.removeEventListener('resize', printCardsForResize)
+    }
+  }, [pathname, movies])
+
+  function clickMore() {
+    setCount(count + printCards().step)
+  }
+
   return (
     <>
       <section className="card-list">
         <div className="card-list__wrapper">
-          <ul className="card-list__list">
-            <li className="card">
-              <MoviesCard name={name} imgUrl={"https://ru-static.z-dn.net/files/d68/de66e569ff65889f9e16f82ef9e53823.jpg"}
-                  filmName="Название фильма, очень очень длинное название фльма"
-                  filmDuration="1ч 37м"
-                  check="true" />
-            </li>
-            <li>
-              <MoviesCard name={name} imgUrl={"https://pp.userapi.com/c841033/v841033453/77418/42UaHoL1hSc.jpg"}
-                  filmName="Название фильма"
-                  filmDuration="1ч 37м" 
-                  check="false"/>
-            </li>
-            <li>
-                <MoviesCard name={name} imgUrl={"https://www.neizvestniy-geniy.ru/images/works/photo/2014/06/1191935_1.jpg"}
-                  filmName="Название фильма"
-                  filmDuration="1ч 37м" 
-                  check="true"/>
-            </li>
-            <li>
-              <MoviesCard name={name} imgUrl={"https://avatars.mds.yandex.net/i?id=1c208b086446199140f16c0c7bc39f75_l-5333204-images-thumbs&ref=rim&n=13&w=640&h=640"}
-                  filmName="Название фильма"
-                  filmDuration="1ч 37м" 
-                  check="false"/>
-            </li>
-            <li>              
-              <MoviesCard name={name} imgUrl={"https://g1.sunlight.net/media/customers/avatars-processed/6b/98/0c/6b980cd4d8f18978a47fc02984a0241eaa423b88.jpg"}
-                filmName="Название фильма"
-                filmDuration="1ч 37м" />
-            </li>
-            <li>
-              <MoviesCard name={name} imgUrl={"https://sc02.alicdn.com/kf/Ha8ee799a423848d2bffe8ee2859a688aX/233017796/Ha8ee799a423848d2bffe8ee2859a688aX.jpg"}
-              filmName="Название фильма"
-              filmDuration="1ч 37м" />
-            </li>
-            <li>
-              <MoviesCard name={name} imgUrl="https://sc02.alicdn.com/kf/Ha8ee799a423848d2bffe8ee2859a688aX/233017796/Ha8ee799a423848d2bffe8ee2859a688aX.jpg"
-              filmName="Название фильма"
-              filmDuration="1ч 37м"></MoviesCard>
-            </li>
-            <li>
-              <MoviesCard name={name} imgUrl="https://i.ebayimg.com/images/g/HFAAAOSwbopZQTEf/s-l500.jpg"
-              filmName="Название фильма"
-              filmDuration="1ч 37м"></MoviesCard>
-            </li>
-          </ul>
+          {
+            isLoading ? <Preloader /> : (pathname === '/movies' && fact.length !== 0) ?
+            <ul className="card-list__list">
+              {
+                fact.map(data => {
+                  return (
+                    
+                      <MoviesCard
+                        key={data.id}
+                        savedMovies={savedMovies}
+                        addMovie={addMovie}
+                        data={data}
+                      />
+                    
+                  )
+                })
+              }
+            </ul> : movies.length !== 0 ? 
+            <ul className="card-list__list">
+              {
+                movies.map(data => {
+                  return (
+                      <MoviesCard
+                        key={data._id}
+                        onDelete={onDelete}
+                        data={data}
+                      />
+                  )
+                })
+              }
+            </ul> :
+              serverError ?
+              <span className='card-list__serch-error'>«Во время запроса произошла ошибка.
+                Возможно, проблема с соединением или сервер недоступен.
+                Подождите немного и попробуйте ещё раз»
+              </span>
+              : !firstEntrance ?
+              <span className='card-list__serch-error'>«Ничего не найдено»</span>
+              : pathname === '/movies' ?
+              <span className='card-list__serch-error'>«Чтобы увидеть список фильмоа выполните поиск»</span>
+              :
+              <span className='card-list__serch-error'>«Нет сохранённых фильмов»</span>
+          }
         </div>
       </section>
-      <Preloader />
+      {pathname === '/movies' && <button type='button' className={`card-list__button-more ${count >= movies.length && 'card-list__button-more_hidden'}`} onClick={clickMore}>Ёще</button>}
     </>
   )
 }

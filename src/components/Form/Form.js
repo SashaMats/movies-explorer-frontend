@@ -1,9 +1,20 @@
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-function Form({title, children, submitButton, question, linkButton, link, isValid}) {
-  console.log(isValid)
+import ErrorContext from '../../utils/ErrorContext';
+import SendContext from '../../utils/SendContext';
+import Preloader from '../Movies/Preloader/Preloader';
+function Form({title, children, submitButton, question, linkButton, link, isValid, onSubmit, name, setIsError}) {
+  const isError = useContext(ErrorContext)
+  const isSend = useContext(SendContext)
+
+  useEffect(() => {
+    setIsError(false)
+  }, [setIsError])
+  
+
   return (
-    <section className='form'>
-        <form className="form__form">
+    <section className='form' name={name}>
+        <form className="form__form" onSubmit={onSubmit}>
           <div className='form__header-section'>
             <div className="form__logo-wrapper">
               <Link to='/' className="form__logo">
@@ -14,13 +25,19 @@ function Form({title, children, submitButton, question, linkButton, link, isVali
             {children}
           </div>
           <div className='form__buttom-section'>
-            {/* <button className="form__button">{submitButton}</button> */}
+          {(name === 'signupForm' && isError) ? <span className={`form__error`}>{'При авторизации произошла ошибка.'}</span> : 
+            (name === 'signinForm' && isError) ? <span className={`form__error`}>{'При регистрации произошла ошибка.'}</span> : ''
+          } 
+          {
+            isSend ? <Preloader name='button' /> :
             <button
               className={'form__button'}
               disabled={!isValid ? true : false}
             >{submitButton}
-              
             </button>
+          }
+
+          
             <div className="form__dialog">
               <span className="form__dialog-text">{question}</span>
               <Link to={`${link}`} className="form__dialog-button">{linkButton}</Link>

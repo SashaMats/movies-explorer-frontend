@@ -1,15 +1,15 @@
-function FilterCheckbox() {
+function FilterCheckbox({ isCheck, changeShort }) {
   return (
     <>
       <div className="checkbox">
 
 
 
-          <label className="checkbox__label" for="checkbox">
+          <label className="checkbox__label" htmlFor="checkbox">
 
 
 
-                <input id="checkbox" className="checkbox__invisible" type="checkbox"></input>
+                <input checked={isCheck} id="checkbox" className="checkbox__invisible" type="checkbox" onChange={() => changeShort()}></input>
 
 
 

@@ -38,9 +38,23 @@
   transition: opacity 0.2s linear;
 }
 .card__complete-icon {
+  cursor: pointer;
+  display: none;
   position: absolute;
+  border: none;
+  background-color: inherit;
+  width: 21px;
+  height: 21px;
   right: 14px;
   top: 14px;
+  background-image: url(../../../images/saved-icon.svg);
+}
+.card__complete-icon:hover {
+  opacity: 80%;
+  transition: opacity 0.2s linear;
+}
+.card__complete-icon_visible {
+  display: block;
 }
 .card__delete-button {
   display: none;
