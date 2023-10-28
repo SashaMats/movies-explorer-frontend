@@ -78,7 +78,7 @@ function MoviesCard({ onDelete, addMovie, data, savedMovies }) {
   return (
         <>
           <div className="card">
-            <div className="card__image__wrapper" 
+            <div className="card__image-wrapper" 
                     onMouseEnter={
                       () => {
                         setIsSaveButtonVisible('card__save-button_visible');

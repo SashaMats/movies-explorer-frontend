@@ -12,10 +12,11 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, min-content);
+  grid-template-rows: repeat(3, 1fr);
   column-gap: 30px;
   row-gap: 59px;
 }
+
 .card-list__button-more {
   cursor: pointer;
   background-color: inherit;

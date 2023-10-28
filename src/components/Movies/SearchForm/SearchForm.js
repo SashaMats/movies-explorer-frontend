@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import ErrorContext from "../../../utils/ErrorContext";
 import useFormValidation from "../../../utils/useFormValidation";
 import FilterCheckbox from "../FilterCheckbox/FilterCeckbox";
+import Preloader from "../Preloader/Preloader";
 
 function SearchForm({ isCheck, changeShort, searchedMovie, searchMovies, setIsError, firstEntrance, savedMovie }) {
   // console.log(searchedMovie)
@@ -54,7 +55,7 @@ function SearchForm({ isCheck, changeShort, searchedMovie, searchMovies, setIsEr
           <button className="search-form__input-submit" type="submit"></button>
           {/* <button type='submit' className={`search__submit ${savedMovie ? (pathname === '/saved-movies' && savedMovie.length === 0) && 'search__submit_disabled' : ''}`}></button> */}
         </div>
-        {isError ? <span>jopa</span> : ''}
+        {isError ? <Preloader/> : ''}
         <FilterCheckbox isCheck={isCheck} changeShort={changeShort} firstEntrance={firstEntrance} />
         <div className="search-form__line"></div>
       </form>

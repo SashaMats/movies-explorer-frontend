@@ -1,15 +1,17 @@
 .card {
   position: relative;
 }
-.image__image-wrapper {
+.card__image-wrapper {
   cursor: pointer;
+  
 }
 .card__image {
   width: 100%;
-  height: 50%;
-  max-height: 201px;
+  min-height: 190px;
+  max-height: 200px;
   border-radius: 5px;
   object-fit: cover;
+
 }
 .card__save-button {
   display: none;
