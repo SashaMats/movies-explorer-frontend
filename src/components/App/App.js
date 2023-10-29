@@ -27,27 +27,34 @@ function App() {
   const [isSuccess, setIsSuccess] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
 
-
-  
   useEffect(() => {
     if (localStorage.jwt) {
-      Promise.all([mainApi.getUserData(localStorage.jwt), mainApi.getMovies(localStorage.jwt)])
-        .then(([userData, dataMovies]) => {
+      mainApi.getUserData(localStorage.jwt) 
+        .then((userData) => {
           setCurrentUser(userData)
-          setSavedMovies(dataMovies.reverse())
           setLoggedIn(true)
           setIsCheckToken(false)
         })
         .catch((err) => {
           console.error(`Ошибка при загрузке начальных данных ${err}`)
           setIsCheckToken(false)
+          setLoggedIn(true)
         })
-    } else {
+      mainApi.getMovies(localStorage.jwt) 
+        .then((dataMovies) => {
+          setSavedMovies(dataMovies.reverse())
+        })
+        .catch((err) => {
+          console.error(`Нет сохраненных фильмов ${err}`)
+        })
+    } 
+    else {
       setLoggedIn(false)
       setIsCheckToken(false)
       localStorage.clear()
     }
   }, [loggedIn])
+  
 
   function handleTogglMovie(data) {
     const isAdd = savedMovies.some(element => data.id === element.movieId)
