@@ -1,4 +1,4 @@
-function FilterCheckbox({ isCheck, changeShort }) {
+function FilterCheckbox({ isCheck, changeShort, searchInputValue }) {
   return (
     <>
       <div className="checkbox">
@@ -9,7 +9,7 @@ function FilterCheckbox({ isCheck, changeShort }) {
 
 
 
-                <input checked={isCheck} id="checkbox" className="checkbox__invisible" type="checkbox" onChange={() => changeShort()}></input>
+                <input checked={isCheck} id="checkbox" className="checkbox__invisible" type="checkbox" onChange={() => changeShort(searchInputValue)}></input>
 
 
 

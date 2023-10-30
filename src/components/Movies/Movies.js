@@ -11,7 +11,7 @@ function Movies({setIsError, savedMovies, addMovie, deleteMovie}) {
   const [isLoading, setIsLoading] = useState(false)
   const [serverError, setServerError] = useState(false)
   const [firstEntrance, setFirstEntrance] = useState(true)
-  
+  // console.log(searchedMouvie)
   const filter = useCallback((search, isCheck, movies) => {
     setSearchedMovie(search)
     localStorage.setItem('movie', JSON.stringify(search))
@@ -59,14 +59,14 @@ function Movies({setIsError, savedMovies, addMovie, deleteMovie}) {
     }
   }, [filter])
 
-  function changeShort() {
+  function changeShort(val) {
     if (isCheck) {
       setIsCheck(false)
-      filter(searchedMouvie, false, allMovies)
+      filter(val, false, allMovies)
       localStorage.setItem('shorts', JSON.stringify(false))
     } else {
       setIsCheck(true)
-      filter(searchedMouvie, true, allMovies)
+      filter(val, true, allMovies)
       localStorage.setItem('shorts', JSON.stringify(true))
     }
   }

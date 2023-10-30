@@ -55,7 +55,6 @@ function App() {
     }
   }, [loggedIn])
   
-
   function handleTogglMovie(data) {
     const isAdd = savedMovies.some(element => data.id === element.movieId)
     console.log(savedMovies)

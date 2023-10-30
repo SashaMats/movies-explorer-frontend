@@ -10,6 +10,7 @@ function SearchForm({ isCheck, changeShort, searchedMovie, searchMovies, setIsEr
   const { pathname } = useLocation()
   const isError = useContext(ErrorContext)
   const { values, handleChange, reset } = useFormValidation()
+  const searchInputValue = values.search
 
   useEffect(() => {
     if ((pathname === '/saved-movies' && savedMovie.length === 0)) {
@@ -23,8 +24,8 @@ function SearchForm({ isCheck, changeShort, searchedMovie, searchMovies, setIsEr
   function onSubmit(evt) {
     evt.preventDefault()
       searchMovies(evt.target.search.value)
-
   }
+  
   // function onSubmit(evt) {
   //   evt.preventDefault()
   //   if (evt.target.search.value) {
@@ -56,7 +57,7 @@ function SearchForm({ isCheck, changeShort, searchedMovie, searchMovies, setIsEr
           {/* <button type='submit' className={`search__submit ${savedMovie ? (pathname === '/saved-movies' && savedMovie.length === 0) && 'search__submit_disabled' : ''}`}></button> */}
         </div>
         {isError ? <Preloader/> : ''}
-        <FilterCheckbox isCheck={isCheck} changeShort={changeShort} firstEntrance={firstEntrance} />
+        <FilterCheckbox searchInputValue={searchInputValue} isCheck={isCheck} changeShort={changeShort} firstEntrance={firstEntrance} />
         <div className="search-form__line"></div>
       </form>
     </section>
