@@ -2,6 +2,7 @@ import SearchForm from './SearchForm/SearchForm';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import { useCallback, useEffect, useState } from 'react';
 import apiMovies from '../../utils/MoviesApi';
+import { ShortDuration } from '../../utils/constants';
 
 function Movies({setIsError, savedMovies, addMovie, deleteMovie}) {
   const [allMovies, setAllMovies] = useState([])
@@ -19,7 +20,7 @@ function Movies({setIsError, savedMovies, addMovie, deleteMovie}) {
     localStorage.setItem('allmovies', JSON.stringify(movies))
     setFilteredMovies(movies.filter((movie) => {
       const searchName = movie.nameRU.toLowerCase().includes(search.toLowerCase())
-      return isCheck ? (searchName && movie.duration <= 40) : searchName
+      return isCheck ? (searchName && movie.duration <= ShortDuration) : searchName
     }))
   }, [])
 
