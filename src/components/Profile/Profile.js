@@ -7,10 +7,9 @@ import Preloader from "../Movies/Preloader/Preloader";
 import ErrorContext from "../../utils/ErrorContext";
 
 
-function Profile({ logOut, editUserData, setIsError, isSuccess, setSuccess, setIsEdit, isEdit, isSend, errorMessage}) {
+function Profile({ logOut, editUserData, setIsError, isSuccess, setSuccess, setIsEdit, isEdit, isSend, errorMessage, setErrorMessage}) {
   const {values, isValid, isInputValid, handleChange} = useFormValidation()
   const currentUser = useContext(CurrentUserContext)
-  // console.log(currentUser)
   const isError = useContext(ErrorContext)
   useEffect(() => {
     setIsError(false)
@@ -19,7 +18,10 @@ function Profile({ logOut, editUserData, setIsError, isSuccess, setSuccess, setI
   useEffect(() => {
       setSuccess(false)
       setIsEdit(false)
-  }, [setSuccess, setIsEdit])
+      return function cleanup() {
+        setErrorMessage('')
+      }
+  }, [setSuccess, setIsEdit, setErrorMessage])
 
   function onSubmit(evt) {
     evt.preventDefault()
@@ -73,6 +75,13 @@ function Profile({ logOut, editUserData, setIsError, isSuccess, setSuccess, setI
         </form>
       }
         {
+          isSuccess ? 
+          <div className="profile__bottom-section">
+            <span className="profile__successful">{'Данные изменены успешно!'}</span>
+            <button onClick={() => {setIsEdit(true); setSuccess(false)}} className="profile__edit">Редактировать</button>
+            <Link to='/' onClick={logOut} className='profile__exit'>Выйти из аккаунта</Link>
+          </div>
+           :
           !isEdit ? 
           <div className="profile__bottom-section">
             <button onClick={() => {setIsEdit(true); setSuccess(false)}} className="profile__edit">Редактировать</button>
@@ -83,7 +92,7 @@ function Profile({ logOut, editUserData, setIsError, isSuccess, setSuccess, setI
               isError ? <span className="profile__error">{errorMessage}</span> : ''
             }
             {
-              isSend ? <Preloader name='button' /> : 
+              isSend ? <Preloader name='button' /> :
               <button 
                 disabled={(values.name === currentUser.name && values.email === currentUser.email) || !isValid || isError ? true : false}
                 onClick={onSubmit} 

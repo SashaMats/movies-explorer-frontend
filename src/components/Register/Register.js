@@ -2,9 +2,9 @@
 import { EmailRegular } from '../../utils/constants';
 import useFormValidation from '../../utils/useFormValidation';
 import Form from '../Form/Form';
-function Register({ handleRegister, setIsError}) {
+function Register({ handleRegister, setIsError, errorMessage, setErrorMessage}) {
   const {values, errors, isValid, isInputValid, handleChange } = useFormValidation()
-
+ console.log(errorMessage)
 
   function onSubmit(evt) {
     evt.preventDefault()
@@ -24,6 +24,8 @@ function Register({ handleRegister, setIsError}) {
       isValid={isValid}
       onSubmit={onSubmit}
       setIsError={setIsError}
+      errorMessage={errorMessage}
+      setErrorMessage={setErrorMessage}
       
     >
         <label htmlFor="name" className="form__label">Имя</label>

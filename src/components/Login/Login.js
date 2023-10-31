@@ -1,7 +1,7 @@
 import { EmailRegular } from '../../utils/constants';
 import useFormValidation from '../../utils/useFormValidation';
 import Form from '../Form/Form';
-function Login({ handleLogin, setIsError}) {
+function Login({ handleLogin, setIsError, errorMessage, setErrorMessage}) {
   const {values, errors, isValid, isInputValid, handleChange } = useFormValidation()
   function onSubmit(evt) {
     evt.preventDefault()
@@ -20,6 +20,8 @@ function Login({ handleLogin, setIsError}) {
       isValid={isValid}
       onSubmit={ onSubmit }
       setIsError={setIsError}
+      errorMessage={errorMessage}
+      setErrorMessage={setErrorMessage}
     >
       <label htmlFor="email" className="form__label">E-mail</label>
 
@@ -46,6 +48,7 @@ function Login({ handleLogin, setIsError}) {
       type="password"
       value={values.password ? values.password : ''}
       onChange={handleChange}
+      autoComplete='on'
       minLength={3} 
       maxLength={30}
       required

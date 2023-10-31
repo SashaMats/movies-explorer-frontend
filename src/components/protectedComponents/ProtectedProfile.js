@@ -16,6 +16,7 @@ function ProtectedProfile({ ...props }) {
         isEdit={props.isEdit}
         isSend={props.isSend}
         errorMessage={props.errorMessage}
+        setErrorMessage={props.setErrorMessage}
         />
     </main>
   </>

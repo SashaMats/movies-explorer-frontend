@@ -27,7 +27,7 @@ function App() {
   const [isSuccess, setIsSuccess] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
   const [errorMessage, setErrorMessage] = useState()
-    // console.log(errorCode)
+
   useEffect(() => {
     if (localStorage.jwt) {
       mainApi.getUserData(localStorage.jwt) 
@@ -37,7 +37,8 @@ function App() {
           setIsCheckToken(false)
         })
         .catch((err) => {
-          console.error(`Ошибка при загрузке начальных данных ${err}`)
+          setErrorMessage('При авторизации произошла ошибка. Переданный токен некорректен.')
+          console.error(`Ошибка при проверке токена ${err}`)
           setIsCheckToken(false)
           setLoggedIn(true)
         })
@@ -58,8 +59,6 @@ function App() {
   
   function handleTogglMovie(data) {
     const isAdd = savedMovies.some(element => data.id === element.movieId)
-    console.log(savedMovies)
-    console.log(isAdd)
     const searchClickMovie = savedMovies.filter((movie) => {
       return movie.movieId === data.id
     })
@@ -74,8 +73,6 @@ function App() {
     }
   }
 
-
-  
   const setSuccess = useCallback(() => {
     setIsSuccess(false)
   }, [])
@@ -99,17 +96,20 @@ function App() {
     setIsSend(true)
     mainApi.authorization(email, password)
       .then(res => {
-        localStorage.setItem('jwt', res.token)
-        
-        navigate('/movies')
-        window.scrollTo(0, 0)
-        setLoggedIn(true)
+        if (res.message) {
+          setIsError(true)
+          setErrorMessage(res.message)
+        } else {
+         localStorage.setItem('jwt', res.token)
+          navigate('/movies')
+          window.scrollTo(0, 0)
+          setLoggedIn(true)
+        }
       })
       .catch((err) => {
-        console.log(err.message)
         setIsError(true)
-        setErrorMessage(err.message)
-        console.error(`Ошибкак при авторизации ${err}`)
+        setErrorMessage('При авторизации произошла ошибка. Токен не передан или передан не в том формате.')
+        console.error(`При авторизации произошла ошибка. Токен не передан или передан не в том формате. ${err}`)
       })
       .finally(() => {setIsSend(false)})
   }
@@ -118,6 +118,9 @@ function App() {
     setIsSend(true)
     mainApi.registration(name, email, password)
       .then((res) => {
+        if (res.message) {
+          setErrorMessage(res.message)
+        } else
         if (res) {
           setLoggedIn(false)
           mainApi.authorization(email, password)
@@ -129,14 +132,16 @@ function App() {
             })
             .catch((err) => {
               setIsError(true)
-              console.error(`Ошибкак при авторизации после регистрации ${err}`)
+              setErrorMessage('При авторизации произошла ошибка. Токен не передан или передан не в том формате.')
+              console.error(`При авторизации произошла ошибка. Токен не передан или передан не в том формате. ${err}`)
             })
             .finally(() => setIsSend(false))
         }
       })
       .catch((err) => {
         setIsError(true)
-        console.error(`Ошибкак при регистрации ${err}`)
+        setErrorMessage('При регистрации пользователя произошла ошибка.')
+        console.error(`При регистрации пользователя произошла ошибка ${err}`)
       })
       .finally(() => setIsSend(false))
   }
@@ -216,15 +221,24 @@ function App() {
                   isEdit={isEdit}
                   isSend={isSend}
                   errorMessage={errorMessage}
+                  setErrorMessage={setErrorMessage}
                 />
               }/>
             <Route path="/signin" element={
               <Register 
                 handleRegister={handleRegister}
                 setIsError={setIsError}
+                errorMessage={errorMessage}
+                setErrorMessage={setErrorMessage}
             />}>
             </Route>
-            <Route path="/signup" element={<Login handleLogin={handleLogin} setIsError={setIsError}/>}></Route>
+            <Route path="/signup" 
+              element={<Login 
+              handleLogin={handleLogin} 
+              setIsError={setIsError} 
+              errorMessage={errorMessage}
+              setErrorMessage={setErrorMessage}/>}>
+            </Route>
             <Route path="*" element={<NotFound />}/>
           </Routes>
           </ErrorContext.Provider>

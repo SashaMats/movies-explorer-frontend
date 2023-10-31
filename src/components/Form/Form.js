@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom';
 import ErrorContext from '../../utils/ErrorContext';
 import SendContext from '../../utils/SendContext';
 import Preloader from '../Movies/Preloader/Preloader';
-function Form({title, children, submitButton, question, linkButton, link, isValid, onSubmit, name, setIsError}) {
+function Form({title, children, submitButton, question, linkButton, link, isValid, onSubmit, name, setIsError, errorMessage, setErrorMessage}) {
   const isError = useContext(ErrorContext)
   const isSend = useContext(SendContext)
 
   useEffect(() => {
     setIsError(false)
-  }, [setIsError])
-  
+    return function cleanup() {
+      setErrorMessage('')
+    }
+  }, [setIsError, setErrorMessage])
 
   return (
     <section className='form' name={name}>
@@ -25,8 +27,8 @@ function Form({title, children, submitButton, question, linkButton, link, isVali
             {children}
           </div>
           <div className='form__buttom-section'>
-          {(name === 'signupForm' && isError) ? <span className={`form__error`}>{'При авторизации произошла ошибка.'}</span> : 
-            (name === 'signinForm' && isError) ? <span className={`form__error`}>{'При регистрации произошла ошибка.'}</span> : ''
+          {(name === 'signupForm' && isError) ? <span className={`form__error`}>{errorMessage}</span> : 
+            (name === 'signinForm' && isError) ? <span className={`form__error`}>{errorMessage}</span> : ''
           } 
           {
             isSend ? <Preloader name='button' /> :

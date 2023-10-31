@@ -89,6 +89,17 @@
   margin-top: -23.31px;
   margin-bottom: 10px;
 }
+.profile__successful {
+  display: block;
+  /* color: rgba(43, 224, 128, 1); */
+ /* color: rgba(255, 0, 76, 1); */
+  color: white;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13.31px;
+  margin-top: -23.31px;
+  margin-bottom: 10px;
+}
 .profile__bottom-section {
   margin: 0 auto;
   position: relative;

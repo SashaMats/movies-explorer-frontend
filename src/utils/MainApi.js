@@ -22,7 +22,7 @@ class MainApi {
         password: password
       })
     })
-    .then(res => this._checkResponse(res))
+    .then(res => {return res.json()})
   }
   authorization(email, password) {
     return fetch(`${this._baseUrl}/signin`, {
@@ -33,7 +33,7 @@ class MainApi {
       },
       body: JSON.stringify({email, password})
     })
-    .then(res => this._checkResponse(res))
+    .then(res => {return(res.json())})
   }
 
   getUserData(token) {
