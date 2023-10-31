@@ -107,8 +107,8 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: 'http://localhost:3000',
-  // baseUrl: 'https://api.mats-study-project.nomoredomainsrocks.ru',
+  // baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.mats-study-project.nomoredomainsrocks.ru',
 });
 
 export default mainApi;
