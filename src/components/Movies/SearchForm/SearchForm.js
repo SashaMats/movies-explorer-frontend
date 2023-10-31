@@ -6,7 +6,6 @@ import FilterCheckbox from "../FilterCheckbox/FilterCeckbox";
 import Preloader from "../Preloader/Preloader";
 
 function SearchForm({ isCheck, changeShort, searchedMovie, searchMovies, setIsError, firstEntrance, savedMovie }) {
-  // console.log(searchedMovie)
   const { pathname } = useLocation()
   const isError = useContext(ErrorContext)
   const { values, handleChange, reset } = useFormValidation()
@@ -25,16 +24,6 @@ function SearchForm({ isCheck, changeShort, searchedMovie, searchMovies, setIsEr
     evt.preventDefault()
       searchMovies(evt.target.search.value)
   }
-  
-  // function onSubmit(evt) {
-  //   evt.preventDefault()
-  //   if (evt.target.search.value) {
-  //     searchMovies(evt.target.search.value)
-  //     setIsError(false)
-  //   } else {
-  //     setIsError(true)
-  //   }
-  // }
 
   return (
     <section>

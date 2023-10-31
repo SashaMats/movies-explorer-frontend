@@ -7,10 +7,10 @@ import Preloader from "../Movies/Preloader/Preloader";
 import ErrorContext from "../../utils/ErrorContext";
 
 
-function Profile({ logOut, editUserData, setIsError, isSuccess, setSuccess, setIsEdit, isEdit, isSend}) {
+function Profile({ logOut, editUserData, setIsError, isSuccess, setSuccess, setIsEdit, isEdit, isSend, errorMessage}) {
   const {values, isValid, isInputValid, handleChange} = useFormValidation()
   const currentUser = useContext(CurrentUserContext)
-  console.log(currentUser)
+  // console.log(currentUser)
   const isError = useContext(ErrorContext)
   useEffect(() => {
     setIsError(false)
@@ -25,8 +25,7 @@ function Profile({ logOut, editUserData, setIsError, isSuccess, setSuccess, setI
     evt.preventDefault()
     editUserData(values.name, values.email)
   }
-  
-  
+
   return (
     <section className="profile">
       { !isEdit ?
@@ -81,10 +80,15 @@ function Profile({ logOut, editUserData, setIsError, isSuccess, setSuccess, setI
           </div> :
           <div className="profile__bottom-section">
             {
-              isError ? <span className="profile__error">При обновлении профиля произошла ошибка.</span> : ''
+              isError ? <span className="profile__error">{errorMessage}</span> : ''
             }
             {
-              isSend ? <Preloader name='button' /> : <button disabled={!isValid || isError ? true : false} onClick={onSubmit} className="profile__button-save">Сохранить</button>
+              isSend ? <Preloader name='button' /> : 
+              <button 
+                disabled={(values.name === currentUser.name && values.email === currentUser.email) || !isValid || isError ? true : false}
+                onClick={onSubmit} 
+                className="profile__button-save">Сохранить
+              </button>
             }
             
           </div>

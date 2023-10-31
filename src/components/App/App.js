@@ -26,7 +26,8 @@ function App() {
   const [isError, setIsError] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
-
+  const [errorMessage, setErrorMessage] = useState()
+    // console.log(errorCode)
   useEffect(() => {
     if (localStorage.jwt) {
       mainApi.getUserData(localStorage.jwt) 
@@ -105,7 +106,9 @@ function App() {
         setLoggedIn(true)
       })
       .catch((err) => {
+        console.log(err.message)
         setIsError(true)
+        setErrorMessage(err.message)
         console.error(`Ошибкак при авторизации ${err}`)
       })
       .finally(() => {setIsSend(false)})
@@ -141,8 +144,9 @@ function App() {
     setIsSend(true)
     mainApi.setUserInfo(username, email, localStorage.jwt)
       .then(res => {
-        if (res === undefined) {
+        if (res.message) {
           setIsError(true)
+          setErrorMessage(res.message)
         } else {
           setCurrentUser(res)
           setIsSuccess(true)
@@ -151,7 +155,8 @@ function App() {
       })
       .catch((err) => {
         setIsError(true)
-        console.error(`Ошибкак при редактировании данных пользователя ${err}`)
+        setErrorMessage('При обновлении профиля произошла ошибка')
+        console.error(`При обновлении профиля произошла ошибка ${err}`)
       })
       .finally(() => setIsSend(false))
   }
@@ -210,6 +215,7 @@ function App() {
                   setIsEdit={setIsEdit}
                   isEdit={isEdit}
                   isSend={isSend}
+                  errorMessage={errorMessage}
                 />
               }/>
             <Route path="/signin" element={

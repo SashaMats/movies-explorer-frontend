@@ -102,9 +102,8 @@ class MainApi {
         email: email,
       })
     })
-    .then(res => this._checkResponse(res));
+    .then(res => {return res.json()})
   }
-
 }
 
 const mainApi = new MainApi({

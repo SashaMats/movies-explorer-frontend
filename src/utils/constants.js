@@ -1,7 +1,7 @@
 export const EmailRegular = "^\\S+@\\S+\\.\\S+$"
 export const ShortDuration = 40
 export const BigScreen = 1280
-export const MediumScreen = 768
+export const MediumScreen = 900
 export const MiniScreen = 560
 export const InitMoreBigScreen = 12
 export const InitLessBigScreen = 12
