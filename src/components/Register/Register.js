@@ -4,7 +4,6 @@ import useFormValidation from '../../utils/useFormValidation';
 import Form from '../Form/Form';
 function Register({ handleRegister, setIsError, errorMessage, setErrorMessage}) {
   const {values, errors, isValid, isInputValid, handleChange } = useFormValidation()
- console.log(errorMessage)
 
   function onSubmit(evt) {
     evt.preventDefault()

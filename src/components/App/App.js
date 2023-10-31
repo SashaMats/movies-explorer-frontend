@@ -119,6 +119,7 @@ function App() {
     mainApi.registration(name, email, password)
       .then((res) => {
         if (res.message) {
+          setIsError(true)
           setErrorMessage(res.message)
         } else
         if (res) {
