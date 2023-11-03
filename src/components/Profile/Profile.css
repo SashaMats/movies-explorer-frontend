@@ -31,6 +31,12 @@
     font-weight: 400;
     font-size: 11px;
     line-height: 13.31px;
+    background-color: inherit;
+    border: none;
+    text-align: right;
+  }
+  .profile__field-content_error {
+    color: rgba(238, 52, 101, 1);
   }
 .profile__edit {
   cursor: pointer;
@@ -57,6 +63,8 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 15.73px;
+  display: block;
+  text-decoration: none;
 }
 .profile__exit:hover {
   opacity: 80%;
@@ -75,6 +83,17 @@
 .profile__error {
   display: block;
   color: rgba(255, 0, 76, 1);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13.31px;
+  margin-top: -23.31px;
+  margin-bottom: 10px;
+}
+.profile__successful {
+  display: block;
+  /* color: rgba(43, 224, 128, 1); */
+ /* color: rgba(255, 0, 76, 1); */
+  color: white;
   font-weight: 400;
   font-size: 11px;
   line-height: 13.31px;
